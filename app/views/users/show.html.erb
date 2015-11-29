@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+	<%= render 'user_greetings' %>
+<% else %>
+	<%= render 'guest_greetings' %>
+<% end %>

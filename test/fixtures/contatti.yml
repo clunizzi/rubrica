@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome: MyString
+  nota: MyString
+  user_id: 
+  telefoni_id: 
+  indirizzo_id: 
+
+two:
+  nome: MyString
+  nota: MyString
+  user_id: 
+  telefoni_id: 
+  indirizzo_id: 

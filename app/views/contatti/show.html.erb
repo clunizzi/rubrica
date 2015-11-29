@@ -1,0 +1,33 @@
+<h1><%= @contatto.nome %></h1>
+<hr>
+
+<h5><%= pluralize(@contatto.telefoni.count, "telefono") %>:</h5>
+<ul>
+	<% @contatto.telefoni.each_with_index do |telefono, i| %>
+		<li>
+			Tel. <%= i+1 %>: <%= telefono.numero_di_telefono %>
+		</li>
+	<% end %>
+</ul>
+
+<h5>Indirizzo:</h5><br>
+<ul>
+	<% @contatto.indirizzi.each do |indirizzo| %>
+		<li>
+			Via: <%= indirizzo.indirizzo %>
+		</li>
+		<li>
+			cap: <%= indirizzo.cap %>
+		</li>
+		<li>
+			città: <%= indirizzo.citta %>
+		</li>
+	<% end %>
+</ul>
+
+<h5>Nota:</h5><br>
+<%= content_tag :div, @contatto.nota, class: 'contatto-nota' %>
+
+<%= link_to 'Modifica', edit_contatto_path(@contatto) %> |
+<%= link_to 'Cancella', contatto_path(@contatto), method: :delete, data: { confirm: "Sicuro?" } %> |
+<%= link_to 'Back', root_path %>

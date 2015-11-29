@@ -1,0 +1,20 @@
+	<h1>Ciao <%= @user.username %></h1> ----- <%= link_to "Profilo", edit_user_registration_path %> | 
+											 <%= link_to "Logout", destroy_user_session_path, method: :delete %><br />
+	<hr>
+	<% if @user.contatti.any? %>
+		<h4>Questa è la lista dei tuoi contatti:<h4>
+		<p>
+			<ul>
+				<% @user.contatti.each do |contatto| %>
+					<li>
+						<%= link_to contatto.nome, contatto_path(contatto) %>
+					</li>
+				<% end %>
+			</ul>
+		</p>
+	<hr>
+	<% else %>
+		<h5>Non hai ancora nessun contatto...</h5>
+	<% end %>
+	<h4>Vuoi forse aggiungerne uno?</h4><br />
+	<p><%= link_to "Si, aggiungi", new_contatto_path %><br>

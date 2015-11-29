@@ -1,0 +1,52 @@
+<%= form_for(@contatto) do |f| %>
+  <% if @contatto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contatto.errors.count, "error") %> prohibited this contatto from being saved:</h2>
+
+      <ul>
+      <% @contatto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <p>
+      <%= f.label :nome %>
+      <%= f.text_field :nome %> 
+    </p>
+    
+    
+      <%= f.fields_for :telefoni do |numero_di_telefono| %>
+        <%= render 'telefono_campi', f: numero_di_telefono %>
+      <%= link_to_add_fields "aggiungi numero", f, :telefoni %>
+      <% end %>
+    
+
+    <ul>
+      <%= f.fields_for :indirizzi do |indirizzo| %>
+        <li>  
+          <%= indirizzo.label :indirizzo %>
+          <%= indirizzo.text_field :indirizzo %>
+        </li>
+        <li>
+          <%= indirizzo.label :cap %>
+          <%= indirizzo.text_field :cap %>
+        </li>
+        <li>
+          <%= indirizzo.label :citta %>
+          <%= indirizzo.text_field :citta %>
+        </li>
+        
+      <% end %>
+    </ul>
+
+    <p>
+      <%= f.label :nota %>
+      <%= f.text_field :nota %>
+    </p>
+
+      <%= f.submit %>
+  </div>
+<% end %>
