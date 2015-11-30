@@ -1,0 +1,14 @@
+<fieldset>
+  <%= f.label :indirizzo %>
+  <%= f.text_field :indirizzo %>
+
+  <%= f.label :cap %>
+  <%= f.text_field :cap %>
+
+  <%= f.label :citta %>
+  <%= f.text_field :citta %>
+
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "elimina", '#', class: "rimuovi_campi" %>
+</fieldset>
+

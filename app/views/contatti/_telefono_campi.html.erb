@@ -1,6 +1,14 @@
 <fieldset>
 	<%= f.label :numero_di_telefono %>
 	<%= f.text_field :numero_di_telefono %>
+
+  	<%= f.label :tipo_telefono %>
+  	<%= f.select(:tipo) do %>
+  		<% [['Personale', 1], ['Aziendale', 2], ['Fax', 2]].each do |t| -%>
+    		<%= content_tag(:option, t.first, value: t.last) %>
+  		<% end %>
+	<% end %>
+
 	<%= f.hidden_field :_destroy %>
 	<%= link_to "elimina", '#', class: "rimuovi_campi" %>
 </fieldset>

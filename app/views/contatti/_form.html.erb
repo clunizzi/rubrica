@@ -12,40 +12,30 @@
   <% end %>
 
   <div class="actions">
-    <p>
+    <fieldset>
       <%= f.label :nome %>
       <%= f.text_field :nome %> 
-    </p>
+    </fieldset>
     
-    
+    <fieldset>
       <%= f.fields_for :telefoni do |numero_di_telefono| %>
         <%= render 'telefono_campi', f: numero_di_telefono %>
-      <%= link_to_add_fields "aggiungi numero", f, :telefoni %>
+        <%= link_to_add_fields "aggiungi numero", f, :telefoni %>
       <% end %>
-    
+    </fieldset>
 
-    <ul>
+    <fieldset>
       <%= f.fields_for :indirizzi do |indirizzo| %>
-        <li>  
-          <%= indirizzo.label :indirizzo %>
-          <%= indirizzo.text_field :indirizzo %>
-        </li>
-        <li>
-          <%= indirizzo.label :cap %>
-          <%= indirizzo.text_field :cap %>
-        </li>
-        <li>
-          <%= indirizzo.label :citta %>
-          <%= indirizzo.text_field :citta %>
-        </li>
-        
+        <%= render 'indirizzo_campi', f: indirizzo %>
+        <%= link_to_add_fields "aggiungi indirizzo", f, :indirizzi %>
       <% end %>
-    </ul>
+    </fieldset>
 
-    <p>
+
+    <fieldset>
       <%= f.label :nota %>
       <%= f.text_field :nota %>
-    </p>
+    </fieldset>
 
       <%= f.submit %>
   </div>

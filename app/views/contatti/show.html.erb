@@ -5,7 +5,7 @@
 <ul>
 	<% @contatto.telefoni.each_with_index do |telefono, i| %>
 		<li>
-			Tel. <%= i+1 %>: <%= telefono.numero_di_telefono %>
+			Tel. <%= i+1 %>: <%= telefono.numero_di_telefono %> - <%= tipo_telefono telefono.tipo %>
 		</li>
 	<% end %>
 </ul>
