@@ -8,6 +8,17 @@
   <%= f.label :citta %>
   <%= f.text_field :citta %>
 
+  <%= f.label :tipo_indirizzo %>
+  <%= f.select(:tipo,
+  	options_for_select(
+      [
+      	['Casa', 1],
+        ['Lavoro', 2]
+      ], f.object.tipo
+    )) %>
+  
+  
+
   <%= f.hidden_field :_destroy %>
   <%= link_to "elimina", '#', class: "rimuovi_campi" %>
 </fieldset>

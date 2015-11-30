@@ -15,6 +15,7 @@ class ContattiController < ApplicationController
 
   # GET /contatti/1/edit
   def edit
+    @contatto.indirizzi.build unless @contatto.indirizzi.any?
   end
 
   # POST /contatti
@@ -64,6 +65,8 @@ class ContattiController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contatto_params
-      params.require(:contatto).permit(:nome, :nota, :user_id, telefoni_attributes: [:id, :numero_di_telefono, :tipo, :_destroy], indirizzi_attributes: [:id, :indirizzo, :cap, :citta])
+      params.require(:contatto).permit(:nome, :nota, :user_id, 
+                                telefoni_attributes: [:id, :numero_di_telefono, :tipo, :_destroy],
+                                indirizzi_attributes: [:id, :indirizzo, :cap, :citta, :tipo, :_destroy])
     end
 end

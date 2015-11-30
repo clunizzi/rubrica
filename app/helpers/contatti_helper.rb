@@ -17,4 +17,12 @@ module ContattiHelper
   	end
   end
 
+  def tipo_indirizzo tipo_indirizzo
+    case tipo_indirizzo
+  	  when 1 then 'Casa'
+  	  when 2 then 'Lavoro'
+  	  else "n.d."
+  	end
+  end
+
 end

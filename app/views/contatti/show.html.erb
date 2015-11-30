@@ -10,23 +10,31 @@
 	<% end %>
 </ul>
 
-<h5>Indirizzo:</h5><br>
-<ul>
+<% if @contatto.indirizzi.any? %>
+  <h5><%= pluralize(@contatto.indirizzi.count, "indirizzo") %>:</h5>
+  <ul>
 	<% @contatto.indirizzi.each do |indirizzo| %>
 		<li>
-			Via: <%= indirizzo.indirizzo %>
+			<%= tipo_indirizzo indirizzo.tipo %>
 		</li>
 		<li>
-			cap: <%= indirizzo.cap %>
+			<%= indirizzo.indirizzo %>
 		</li>
 		<li>
-			città: <%= indirizzo.citta %>
+			Cap: <%= indirizzo.cap %>
 		</li>
+		<li>
+			Città: <%= indirizzo.citta %>
+		</li>
+		<br />
 	<% end %>
-</ul>
+  </ul>
+ <% end %>
 
-<h5>Nota:</h5><br>
-<%= content_tag :div, @contatto.nota, class: 'contatto-nota' %>
+<% if @contatto.nota? %>
+	<%= content_tag :h5, 'Nota:', class: 'nota-header' %>
+	<%= content_tag :div, @contatto.nota, class: 'nota-contatto' %>
+<% end %>
 
 <%= link_to 'Modifica', edit_contatto_path(@contatto) %> |
 <%= link_to 'Cancella', contatto_path(@contatto), method: :delete, data: { confirm: "Sicuro?" } %> |
