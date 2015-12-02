@@ -1,2 +1,2 @@
-$('#trovato').html('<%= escape_javascript(render('contatto_trovato')) %>');
-$('#trovato').show();
+$('#header_contatti').html('Ho trovato <%= j(pluralize(@contatto.count, "contatto")) %> dopo questa ricerca:');
+$('#trovato').html('<%= j(render('contatto_trovato')) %>');

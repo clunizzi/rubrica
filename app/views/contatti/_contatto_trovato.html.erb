@@ -1,3 +1,5 @@
-  <% @contatto.each do |contatto| %>
-    <%= link_to contatto.nome, contatto_path(contatto) %>
-  <% end  %>
+<% @contatto.each do |contatto| %>
+  <%= content_tag(:li, link_to(contatto.nome, contatto_path(contatto))) %>
+<% end  %>
+<br>
+<%= link_to "Mostra tutti", :back %>

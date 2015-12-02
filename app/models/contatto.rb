@@ -11,10 +11,10 @@ class Contatto < ActiveRecord::Base
 								reject_if: proc { |attributes| attributes['indirizzo'].blank? &&
 															   attributes['cap'].blank? &&
 															   attributes['citta'].blank?  }
-	default_scope -> { order(nome: :asc) }
+	scope :order_by_nome, -> { order('LOWER(nome)') }
 
 	def self.cerca(contatto)
-    # where(:title, query) -> This would return an exact match of the query
-    where("nome like ?", "%#{contatto}%") 
-  end
+      # where(:title, query) -> This would return an exact match of the query
+      where("nome like ?", "%#{contatto}%") 
+    end
 end
