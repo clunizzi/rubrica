@@ -4,6 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :contatti
+  has_many :contatti, dependent: :destroy
   accepts_nested_attributes_for :contatti
 end

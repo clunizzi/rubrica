@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users
   root to: "users#show"
-  resources :contatti, except: :index do
-    resources :telefoni, only: :destroy
-  end
+  resources :contatti, expect: :index
+  match '/ricerca', to: 'contatti#ricerca', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

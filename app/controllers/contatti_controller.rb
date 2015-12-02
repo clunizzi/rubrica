@@ -57,10 +57,18 @@ class ContattiController < ApplicationController
     end
   end
 
+  def ricerca
+    @contatto = current_user.contatti.cerca(params[:ricerca]) if params[:ricerca]
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contatto
-      @contatto = Contatto.find(params[:id])
+      @contatto = current_user.contatti.find_by(id: params[:id])
+      redirect_to root_url if @contatto.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

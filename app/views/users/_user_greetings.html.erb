@@ -2,14 +2,19 @@
 											 <%= link_to "Logout", destroy_user_session_path, method: :delete %><br />
 	<hr>
 	<% if @user.contatti.any? %>
-		<h4>Questa è la lista dei tuoi contatti:<h4>
+				
+		<%= form_tag('/ricerca',
+		              method: "get",
+		              remote: true,
+		              class: "form_ricerca") %> 
+		  <%= text_field_tag 'ricerca', nil, placeholder: 'Cerca un contatto' %>
+		  <%= submit_tag("Cerca contatto") %>
+
+
+		<h4 id="header_contatti">Questa è la lista dei tuoi contatti:<h4>
 		<p>
-			<ul>
-				<% @user.contatti.each do |contatto| %>
-					<li>
-						<%= link_to contatto.nome, contatto_path(contatto) %>
-					</li>
-				<% end %>
+			<ul id="trovato">
+			  <%= render @user.contatti %>
 			</ul>
 		</p>
 	<hr>

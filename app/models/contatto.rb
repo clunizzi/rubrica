@@ -1,4 +1,5 @@
 class Contatto < ActiveRecord::Base
+	belongs_to :user
 	validates :nome, presence: true
 	has_many :telefoni
 	accepts_nested_attributes_for :telefoni, reject_if: :all_blank, allow_destroy: true
@@ -10,5 +11,10 @@ class Contatto < ActiveRecord::Base
 								reject_if: proc { |attributes| attributes['indirizzo'].blank? &&
 															   attributes['cap'].blank? &&
 															   attributes['citta'].blank?  }
-	belongs_to :user
+	default_scope -> { order(nome: :asc) }
+
+	def self.cerca(contatto)
+    # where(:title, query) -> This would return an exact match of the query
+    where("nome like ?", "%#{contatto}%") 
+  end
 end
