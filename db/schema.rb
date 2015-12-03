@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130205856) do
+ActiveRecord::Schema.define(version: 20151203203600) do
 
   create_table "contatti", force: :cascade do |t|
     t.string   "nome"
     t.string   "nota"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.string   "foto",       default: "../../default.jpg"
   end
 
   add_index "contatti", ["user_id"], name: "index_contatti_on_user_id"

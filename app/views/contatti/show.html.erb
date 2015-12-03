@@ -1,4 +1,5 @@
 <h1><%= @contatto.nome %></h1>
+<%= image_tag @contatto.foto.url, class: "foto-contatto" %>
 <hr>
 
 <h5><%= pluralize(@contatto.telefoni.count, "telefono") %>:</h5>
