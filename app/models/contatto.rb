@@ -1,6 +1,6 @@
 class Contatto < ActiveRecord::Base
-	has_many :telefoni
-	has_many :indirizzi
+	has_many :telefoni, dependent: :destroy
+	has_many :indirizzi, dependent: :destroy
 	belongs_to :user
 	scope :order_by_nome, -> { order('LOWER(nome)') }
 	mount_uploader :foto, FotoUploader
